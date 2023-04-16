@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../static/css/style.css">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Transcation Fraudualent Detection</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="Type" placeholder="Type of transcation(payment/transfer/cash_out/cash_in/Debit)" required="required" >
+       <input type="text" name="Transaction_Amt" placeholder="Transaction_Amt(in digits)" required="required" >
+       <input type="text" name="Actual_amount_orig(Sender)" placeholder="Actual_amount_orig(ammount currently Sender have) - in digits" required="required" >
+		   <input type="text" name="Actual_amount_dest(Receiver)" placeholder="Actual_amount_dest(ammount currently Receiver have) - in digits " required="required" >
+		   <input type="text" name="TransactionPath" placeholder="TransactionPath-in digits(Path id of the Transcations take place )" required="required" >
+		
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+    <font size="6"> 
+   <b>{{ prediction_text }}</b>
+
+ </div>
+
+
+</body>
+</html>
